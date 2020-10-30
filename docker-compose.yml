@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  python:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - .:/app
+      - pip-volume:/usr/local/lib/python3.8/site-packages
+    environment:
+      PYTHONPATH: /app/vendor/bin
+      PYTHONUSERBASE: /app/vendor
+    ports:
+      - 7000:8000
+    command: 'uvicorn main:app --reload --host 0.0.0.0'
+volumes:
+  pip-volume:
