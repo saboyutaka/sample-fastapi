@@ -1,13 +1,16 @@
 .DEFAULT_GOAL := help
 
-build: ## build develoment environment
+build: ## build develoment environment without workspace
 	docker-compose run --rm python pip install -r requirements.txt --user
 
-serve: ## Run Server
+serve: ## Run Server without workspace
 	docker-compose up python
 
-pip-install: ## Run route:list
-	docker-compose run --rm python pip install -r requirements.txt --user
+pip-install: ## Run pip install with workspace
+	pip install -r requirements.txt --user
+
+run: ## Run FastAPI with workspace
+	uvicorn main:app --reload --host 0.0.0.0 --port 7000
 
 .PHONY: help
 help:

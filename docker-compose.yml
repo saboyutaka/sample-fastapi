@@ -7,12 +7,12 @@ services:
       dockerfile: docker/python/Dockerfile
     volumes:
       - .:/app
-      - pip-volume:/usr/local/lib/python3.8/site-packages
+      - pip-volume:/app/vendor
     environment:
       PYTHONPATH: /app/vendor/bin
       PYTHONUSERBASE: /app/vendor
     ports:
-      - 7000:8000
-    command: 'uvicorn main:app --reload --host 0.0.0.0'
+      - 7000:7000
+    command: 'uvicorn main:app --reload --host 0.0.0.0 --port 7000'
 volumes:
   pip-volume:
