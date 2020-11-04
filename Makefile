@@ -10,7 +10,7 @@ pip-install: ## Run pip install with workspace
 	pip install -r requirements.txt --user
 
 run: ## Run FastAPI with workspace
-	uvicorn main:app --reload --host 0.0.0.0 --port 7000
+	uvicorn app.main:app --reload --host 0.0.0.0 --port 7000
 
 .PHONY: help
 help:
